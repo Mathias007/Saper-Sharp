@@ -23,7 +23,7 @@ The project is divided into three classes:
 
 ## Author
 
-Author: Mateusz ***Mathias** Stawowski
+Author: Mateusz **Mathias** Stawowski
 
 ## License
 
