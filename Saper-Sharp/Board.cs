@@ -20,7 +20,19 @@ class Board
             board[y, x] = '*';
         }
 
-        // Reszta kodu do zainicjalizowania reszty planszy...
+        // Zainicjalizuj resztę planszy.
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                if (board[i, j] != '*')
+                {
+                    int count = CountAdjacentBombs(board, j, i);
+                    board[i, j] = count.ToString()[0];
+                }
+            }
+        }
+
         return board;
     }
 
