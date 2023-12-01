@@ -25,12 +25,39 @@ class MinesweeperGame
         {
             Display.DisplayBoard(displayBoard);
 
-            Console.WriteLine("Podaj współrzędne (x, y) do odkrycia (np. 2 3): ");
-            string[] input = Console.ReadLine().Split(' ');
+            int[] coordinates = Display.GetUserInput();
 
-            // Reszta kodu do obsługi gry...
+            int x = coordinates[0];
+            int y = coordinates[1];
+
+            if (x >= 0 && x < width && y >= 0 && y < height && displayBoard[y, x] == ' ')
+            {
+                if (board[y, x] == '*')
+                {
+                    Console.WriteLine("Boom! Koniec gry.");
+                    gameOver = true;
+                }
+                else
+                {
+                    int count = Board.CountAdjacentBombs(board, x, y);
+                    displayBoard[y, x] = count.ToString()[0];
+
+                    if (count == 0)
+                    {
+                        Board.ExpandZeros(board, displayBoard, x, y);
+                    }
+
+                    if (Board.CheckWin(displayBoard, bombCount))
+                    {
+                        Console.WriteLine("Gratulacje! Wygrałeś!");
+                        gameOver = true;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nieprawidłowe współrzędne. Spróbuj ponownie.");
+            }
         }
     }
-
-    // Reszta kodu klasy MinesweeperGame...
 }
