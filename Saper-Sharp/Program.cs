@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        MinesweeperGame game = new MinesweeperGame(10, 10, 15);
+        game.Play();
+    }
+}
